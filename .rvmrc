@@ -1,0 +1,7 @@
+rvm --create use 1.9.2@signantia-analysis
+
+if ! command -v bundle ; then
+  gem install bundler
+fi
+
+bundle | grep -v 'Using' | grep -v 'complete' | sed '/^$/d'
