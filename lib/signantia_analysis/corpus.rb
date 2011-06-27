@@ -13,5 +13,15 @@ module SignantiaAnalysis
       FilePath,
       :required => true
     has n, :files
+    
+    after :save, :register_files
+    
+    def register_files
+      Dir[path + "*"].each do |f|
+        files.create(
+          :path => f
+          )
+      end
+    end
   end
 end

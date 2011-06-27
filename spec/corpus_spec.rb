@@ -23,4 +23,11 @@ describe "Corpus" do
       @corpus.files.should == [@file]
     end
   end
+  
+  context "callbacks" do
+    it "should register files after save" do
+      @corpus = Factory.create(:corpus_with_callbacks)
+      @corpus.files.count.should == 3
+    end
+  end
 end
