@@ -23,11 +23,11 @@ describe "Corpus" do
       @corpus.files.should == [@file]
     end
     
-    it "should allow fragments to be assigned" do
+    it "should allow analyses to be assigned" do
       @corpus = Factory.create(:corpus)
-      @fragment = Factory.create(:fragment)
-      @corpus.fragments << @fragment
-      @corpus.fragments.should == [@fragment]
+      @analysis = Factory.create(:analysis)
+      @corpus.analyses << @analysis
+      @corpus.analyses.should == [@analysis]
     end
   end
   

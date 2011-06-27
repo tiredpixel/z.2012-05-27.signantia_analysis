@@ -12,6 +12,7 @@ module SignantiaAnalysis
     property :regex,
       Regexp,
       :required => true
+    belongs_to :corpus
     has n, :fragments
   end
 end

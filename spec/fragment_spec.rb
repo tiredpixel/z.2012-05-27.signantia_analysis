@@ -14,13 +14,6 @@ describe "Fragment" do
       @fragment.should_not be_valid
     end
     
-    it "should be invalid without a corpus" do
-      @fragment = Factory.build(:fragment,
-        :corpus => nil
-        )
-      @fragment.should_not be_valid
-    end
-    
     it "should be invalid without an analysis" do
       @fragment = Factory.build(:fragment,
         :analysis => nil

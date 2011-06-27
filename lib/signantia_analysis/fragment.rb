@@ -12,7 +12,6 @@ module SignantiaAnalysis
     property :text,
       String,
       :required => true
-    belongs_to :corpus
     belongs_to :analysis
   end
 end

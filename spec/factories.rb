@@ -9,16 +9,16 @@ Factory.define :corpus_with_callbacks, :class => SignantiaAnalysis::Corpus do |c
 end
 
 Factory.define :file, :class => SignantiaAnalysis::File do |f|
-  f.path "#{File.dirname(__FILE__)}/fixtures/corpus/1"
   f.association(:corpus)
+  f.path "#{File.dirname(__FILE__)}/fixtures/corpus/1"
 end
 
 Factory.define :analysis, :class => SignantiaAnalysis::Analysis do |a|
+  a.association(:corpus)
   a.regex "[\S]+"
 end
 
 Factory.define :fragment, :class => SignantiaAnalysis::Fragment do |f|
-  f.text "word"
-  f.association(:corpus)
   f.association(:analysis)
+  f.text "word"
 end

@@ -13,6 +13,13 @@ describe "Analysis" do
         )
       @analysis.should_not be_valid
     end
+    
+    it "should be invalid when corpus is empty" do
+      @analysis = Factory.create(:analysis,
+        :corpus => nil
+        )
+      @analysis.should_not be_valid
+    end
   end
   
   context "associations" do
