@@ -18,5 +18,6 @@ module SignantiaAnalysis
       :default => lambda { |r, p|
         Digest::MD5.hexdigest(r.path.read) if r.path
         }
+    belongs_to :corpus
   end
 end
