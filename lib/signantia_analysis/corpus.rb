@@ -12,14 +12,14 @@ module SignantiaAnalysis
     property :path,
       FilePath,
       :required => true
-    has n, :files
+    has n, :textfiles
     has n, :analyses
     
-    after :save, :register_files
+    after :save, :register_textfiles
     
-    def register_files
+    def register_textfiles
       Dir[path + "*"].each do |f|
-        files.create(
+        textfiles.create(
           :path => f
           )
       end

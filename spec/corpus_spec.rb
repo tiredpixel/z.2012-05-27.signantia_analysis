@@ -16,11 +16,11 @@ describe "Corpus" do
   end
   
   context "associations" do
-    it "should allow files to be assigned" do
+    it "should allow textfiles to be assigned" do
       @corpus = Factory.create(:corpus)
-      @file = Factory.create(:file)
-      @corpus.files << @file
-      @corpus.files.should == [@file]
+      @textfile = Factory.create(:textfile)
+      @corpus.textfiles << @textfile
+      @corpus.textfiles.should == [@textfile]
     end
     
     it "should allow analyses to be assigned" do
@@ -32,9 +32,9 @@ describe "Corpus" do
   end
   
   context "callbacks" do
-    it "should register files after save" do
+    it "should register textfiles after save" do
       @corpus = Factory.create(:corpus_with_callbacks)
-      @corpus.files.count.should == 3
+      @corpus.textfiles.count.should == 3
     end
   end
 end

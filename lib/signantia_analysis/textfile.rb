@@ -1,5 +1,5 @@
 module SignantiaAnalysis
-  class File
+  class Textfile
     include DataMapper::Resource
     
     property :id,
