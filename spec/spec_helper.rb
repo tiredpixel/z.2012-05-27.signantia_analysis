@@ -13,8 +13,8 @@ RSpec.configure do |config|
     }
   
   config.before(:each) {
-    DataMapper.auto_migrate!
-    
     DataMapper.finalize
+    
+    DataMapper.auto_migrate!
     }
 end
