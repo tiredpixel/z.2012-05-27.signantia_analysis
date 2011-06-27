@@ -16,3 +16,9 @@ end
 Factory.define :analysis, :class => SignantiaAnalysis::Analysis do |a|
   a.regex "[\S]+"
 end
+
+Factory.define :fragment, :class => SignantiaAnalysis::Fragment do |f|
+  f.text "word"
+  f.association(:corpus)
+  f.association(:analysis)
+end

@@ -14,4 +14,13 @@ describe "Analysis" do
       @analysis.should_not be_valid
     end
   end
+  
+  context "associations" do
+    it "should allow fragments to be assigned" do
+      @analysis = Factory.create(:analysis)
+      @fragment = Factory.create(:fragment)
+      @analysis.fragments << @fragment
+      @analysis.fragments.should == [@fragment]
+    end
+  end
 end

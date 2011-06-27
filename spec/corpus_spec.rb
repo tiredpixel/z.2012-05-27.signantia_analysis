@@ -22,6 +22,13 @@ describe "Corpus" do
       @corpus.files << @file
       @corpus.files.should == [@file]
     end
+    
+    it "should allow fragments to be assigned" do
+      @corpus = Factory.create(:corpus)
+      @fragment = Factory.create(:fragment)
+      @corpus.fragments << @fragment
+      @corpus.fragments.should == [@fragment]
+    end
   end
   
   context "callbacks" do

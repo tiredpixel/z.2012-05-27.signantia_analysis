@@ -13,6 +13,7 @@ module SignantiaAnalysis
       FilePath,
       :required => true
     has n, :files
+    has n, :fragments
     
     after :save, :register_files
     

@@ -1,5 +1,5 @@
 module SignantiaAnalysis
-  class Analysis
+  class Fragment
     include DataMapper::Resource
     
     property :id,
@@ -9,9 +9,10 @@ module SignantiaAnalysis
     property :updated_at,
       DateTime
     
-    property :regex,
-      Regexp,
+    property :text,
+      String,
       :required => true
-    has n, :fragments
+    belongs_to :corpus
+    belongs_to :analysis
   end
 end
