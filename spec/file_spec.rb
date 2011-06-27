@@ -25,5 +25,31 @@ describe "File" do
         )
       @file.should_not be_valid
     end
+    
+    it "should be invalid with duplicate corpus, path" do
+      @file = Factory.create(:file)
+      @file2 = Factory.build(:file,
+        :corpus => @file.corpus,
+        :path => @file.path
+        )
+      @file2.should_not be_valid
+    end
+    
+    it "should be valid with duplicate path, not corpus" do
+      @file = Factory.create(:file)
+      @file2 = Factory.build(:file,
+        :path => @file.path
+        )
+      @file2.should be_valid
+    end
+    
+    it "should be valid with duplicate corpus, not path" do
+      @file = Factory.create(:file)
+      @file2 = Factory.build(:file,
+        :corpus => @file.corpus,
+        :path => "#{File.dirname(__FILE__)}/fixtures/corpus/2"
+        )
+      @file2.should be_valid
+    end
   end
 end

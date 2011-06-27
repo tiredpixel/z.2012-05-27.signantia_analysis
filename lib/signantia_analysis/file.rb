@@ -19,5 +19,7 @@ module SignantiaAnalysis
         Digest::MD5.hexdigest(r.path.read) if r.path
         }
     belongs_to :corpus
+    
+    validates_uniqueness_of :path, :scope => :corpus_id
   end
 end
