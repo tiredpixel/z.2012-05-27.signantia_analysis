@@ -1,3 +1,3 @@
 require 'data_mapper'
 
-#require_relative 'signantia_analysis/filename'
+require_relative 'signantia_analysis/file'
