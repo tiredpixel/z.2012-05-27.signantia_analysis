@@ -16,9 +16,28 @@ OptionParser.new do |opts|
   opts.on(
     '-d',
     "--database DATABASE",
-    "The database URI - e.g. sqlite:db/example.sqlite3"
+    "The database URI",
+    "  e.g. sqlite:db/example.sqlite3"
     ) do |database|
     options[:database] = database
+  end
+  
+  opts.on(
+    '-c',
+    "--corpus CORPUS",
+    "The corpus path",
+    "  e.g. spec/corpus/"
+    ) do |corpus|
+    options[:corpus] = corpus
+  end
+  
+  opts.on(
+    '-r',
+    "--regex REGEX",
+    "The regex to match",
+    "  e.g. /[\\S+]/"
+    ) do |corpus|
+    options[:corpus] = corpus
   end
 end.parse!
 
