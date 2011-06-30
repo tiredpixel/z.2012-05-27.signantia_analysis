@@ -47,6 +47,10 @@ module SignantiaAnalysis
           @fragment.frequency += 1
           @fragment.save
         end
+        
+        @analysis.status = true
+        
+        @analysis.save
       end
       
       @analysis

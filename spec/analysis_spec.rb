@@ -34,7 +34,7 @@ describe "Analysis" do
   end
   
   context "defaults" do
-    it "should have 0 for frequency" do
+    it "should have false for status" do
       @analysis = Factory.build(:analysis)
       @analysis.status.should == false
     end
@@ -100,6 +100,10 @@ describe "Analysis" do
       
       it "should detect the correct frequency of a word" do
         @analysis.fragments.first(:text => "to").frequency.should == 5
+      end
+      
+      it "should set completed status" do
+        @analysis.status.should == true
       end
     end
   end
