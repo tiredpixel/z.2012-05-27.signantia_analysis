@@ -4,7 +4,7 @@ end
 
 Factory.define :analysis, :class => SignantiaAnalysis::Analysis do |a|
   a.md5sum "acaceb50eb543d1047c64987c914e547"
-  a.regex "[\\S]+"
+  a.regex "/[\\S]+/"
 end
 
 Factory.define :fragment, :class => SignantiaAnalysis::Fragment do |f|

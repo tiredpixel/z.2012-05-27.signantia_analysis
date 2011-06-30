@@ -69,22 +69,38 @@ describe "Analysis" do
       @analysis.should_not be_valid
     end
     
-    it "should be invalid when md5sum wrong length" do
-      [(1..31), (33..100)].each do |r|
-        r.each do |i|
-          @analysis = Factory.build(:analysis,
-          :md5sum => "A" * i
-          )
-          @analysis.should_not be_valid
-        end
-      end
-    end
-    
     it "should be invalid when regex is empty" do
       @analysis = Factory.create(:analysis,
         :regex => nil
         )
       @analysis.should_not be_valid
+    end
+  end
+  
+  context "static methods" do
+    context "analyse" do
+      before(:each) do
+        @analysis = SignantiaAnalysis::Analysis.analyse(
+          "#{File.dirname(__FILE__)}/fixtures/corpus/1",
+          "/[\\S]+/"
+          )
+      end
+      
+      it "should return an analysis" do
+        @analysis.should be_instance_of(SignantiaAnalysis::Analysis)
+      end
+      
+      it "should detect the correct number of words" do
+        @analysis.fragments.sum(:frequency).should == 206
+      end
+      
+      it "should detect the correct number of unique words" do
+        @analysis.fragments.count.should == 139
+      end
+      
+      it "should detect the correct frequency of a word" do
+        @analysis.fragments.first(:text => "to").frequency.should == 5
+      end
     end
   end
 end
