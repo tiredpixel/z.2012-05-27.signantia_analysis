@@ -75,8 +75,16 @@ describe "Corpus" do
         @corpus.analyses(:regex => "/[\\S]+/").fragments.count.should == 143
       end
       
+      it "should tally the correct number of words" do
+        @corpus.analyses(:regex => "/[\\S]+/").fragments.aggregate(:text, :frequency.sum).count.should == 142
+      end
+      
       it "should tally the correct frequency of a word across files" do
         @corpus.analyses(:regex => "/[\\S]+/").fragments(:text => "I").sum(:frequency).should == 3
+      end
+      
+      it "should tally the correct total" do
+        @corpus.analyses(:regex => "/[\\S]+/").fragments.sum(:frequency).should == 210
       end
     end
   end
