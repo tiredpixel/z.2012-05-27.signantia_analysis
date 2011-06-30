@@ -14,5 +14,15 @@ module SignantiaAnalysis
     property :path,
       FilePath,
       :required => true
+    
+    def analyse(regex)
+      Dir[path.to_s + "*"].each do |f|
+        @analysis = Analysis.analyse(f, regex)
+        
+        self.analyses << @analysis
+        
+        self.save
+      end
+    end
   end
 end
