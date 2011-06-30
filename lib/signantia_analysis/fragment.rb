@@ -9,9 +9,10 @@ module SignantiaAnalysis
     property :updated_at,
       DateTime
     
+    belongs_to :analysis
+    
     property :text,
       String,
       :required => true
-    belongs_to :analysis
   end
 end

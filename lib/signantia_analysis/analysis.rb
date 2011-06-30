@@ -9,10 +9,17 @@ module SignantiaAnalysis
     property :updated_at,
       DateTime
     
+    has n, :corpuss, :through => Resource
+    has n, :fragments
+    
+    property :md5sum,
+      String,
+      :length => 32,
+      :required => true
     property :regex,
       Regexp,
       :required => true
-    belongs_to :corpus
-    has n, :fragments
+    property :status,
+      Boolean
   end
 end
