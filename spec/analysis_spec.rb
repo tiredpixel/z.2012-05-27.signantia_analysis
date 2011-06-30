@@ -105,6 +105,24 @@ describe "Analysis" do
       it "should set completed status" do
         @analysis.status.should == true
       end
+      
+      it "should return an existing analysis if it exists" do
+        @analysis2 = SignantiaAnalysis::Analysis.analyse(
+          "#{File.dirname(__FILE__)}/fixtures/corpus/1",
+          "/[\\S]+/"
+          )
+        @analysis2.should == @analysis
+      end
+      
+      it "should not create more fragments if analysis exists" do
+        count = @analysis.fragments.count
+        @analysis = SignantiaAnalysis::Analysis.analyse(
+          "#{File.dirname(__FILE__)}/fixtures/corpus/1",
+          "/[\\S]+/"
+          )
+        @analysis.reload
+        @analysis.fragments.count.should == count
+      end
     end
   end
 end
