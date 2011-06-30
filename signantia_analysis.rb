@@ -36,8 +36,8 @@ OptionParser.new do |opts|
     "--regex REGEX",
     "The regex to match",
     "  e.g. /[\\S+]/"
-    ) do |corpus|
-    options[:corpus] = corpus
+    ) do |regex|
+    options[:regex] = regex
   end
 end.parse!
 
@@ -58,6 +58,12 @@ DataMapper.setup(
 DataMapper.finalize
 
 DataMapper.auto_upgrade!
+
+# do analysis                                                                  #
+
+@corpus = SignantiaAnalysis::Corpus.first_or_create(:path => options[:corpus])
+
+@corpus.analyse(options[:regex])
 
 #                                                                              #
 
