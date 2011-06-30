@@ -44,8 +44,7 @@ module SignantiaAnalysis
         
         data.scan(eval(@analysis.regex)).each do |word|
           @fragment = @analysis.fragments.first_or_create(:text => word)
-          @fragment.frequency += 1
-          @fragment.save
+          @fragment.adjust!(:frequency => 1)
         end
         
         @analysis.status = true
