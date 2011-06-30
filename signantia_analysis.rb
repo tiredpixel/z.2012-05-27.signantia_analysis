@@ -4,7 +4,7 @@ require 'optparse'
 
 require_relative 'lib/signantia_analysis'
 
-puts "signantia_analysis"
+puts "\n***signantia_analysis***\n\n"
 
 # read options                                                                 #
 
@@ -43,7 +43,16 @@ end.parse!
 
 # options are available in options, remaining arguments in ARGV
 
+puts "options:"
+puts "  database: #{options[:database]}"
+puts "  corpus:   #{options[:corpus]}"
+puts "  regex:    #{options[:regex]}"
+puts ""
+
 # set up database                                                              #
+
+puts "* set up database"
+start = Time.now
 
 #DataMapper::Logger.new(
 #  STDOUT,
@@ -59,11 +68,23 @@ DataMapper.finalize
 
 DataMapper.auto_upgrade!
 
+puts "  time: #{Time.now - start}"
+puts ""
+
 # do analysis                                                                  #
+
+puts "* doing analysis"
+start = Time.now
 
 @corpus = SignantiaAnalysis::Corpus.first_or_create(:path => options[:corpus])
 
 @corpus.analyse(options[:regex])
+
+puts "  time:      #{Time.now - start}"
+puts "  files:     #{@corpus.analyses(:regex => options[:regex], :status => true).count}"
+puts "  words:     #{@corpus.analyses(:regex => options[:regex], :status => true).fragments.aggregate(:text, :frequency.sum).count}"
+puts "  total:     #{@corpus.analyses(:regex => options[:regex], :status => true).fragments.sum(:frequency)}"
+puts ""
 
 #                                                                              #
 
