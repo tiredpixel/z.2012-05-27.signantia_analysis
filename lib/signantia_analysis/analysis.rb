@@ -20,6 +20,7 @@ module SignantiaAnalysis
       Regexp,
       :required => true
     property :status,
-      Boolean
+      Boolean,
+      :default => false
   end
 end

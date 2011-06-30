@@ -33,6 +33,13 @@ describe "Analysis" do
     end
   end
   
+  context "defaults" do
+    it "should have 0 for frequency" do
+      @analysis = Factory.build(:analysis)
+      @analysis.status.should == false
+    end
+  end
+  
   context "associations" do
     it "should allow corpuss to be assigned" do
       @analysis = Factory.create(:analysis)

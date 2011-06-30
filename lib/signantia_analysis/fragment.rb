@@ -14,5 +14,8 @@ module SignantiaAnalysis
     property :text,
       String,
       :required => true
+    property :frequency,
+      Integer,
+      :default => 0
   end
 end
