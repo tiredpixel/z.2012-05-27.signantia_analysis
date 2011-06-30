@@ -90,15 +90,15 @@ describe "Analysis" do
         @analysis.should be_instance_of(SignantiaAnalysis::Analysis)
       end
       
-      it "should detect the correct number of words" do
+      it "should tally the correct number of words" do
         @analysis.fragments.sum(:frequency).should == 206
       end
       
-      it "should detect the correct number of unique words" do
+      it "should tally the correct number of unique words" do
         @analysis.fragments.count.should == 139
       end
       
-      it "should detect the correct frequency of a word" do
+      it "should tally the correct frequency of a word" do
         @analysis.fragments.first(:text => "to").frequency.should == 5
       end
       
