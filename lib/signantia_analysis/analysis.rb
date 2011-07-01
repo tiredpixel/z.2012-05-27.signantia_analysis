@@ -38,11 +38,17 @@ module SignantiaAnalysis
           :regex => regex
           )
         
+        start = Time.now
+        
         hash = Hash.new(0)
         
         data.scan(eval(@analysis.regex)).each do |word|
           hash[word] += 1
         end
+        
+        puts "    hash: #{Time.now - start}"
+        
+        start = Time.now
         
         Analysis.transaction do
           hash.each do |word, frequency|
@@ -51,6 +57,10 @@ module SignantiaAnalysis
             @fragment.save!
           end
         end
+        
+        puts "    db:   #{Time.now - start}"
+      else
+        puts "    cached"
       end
       
       @analysis

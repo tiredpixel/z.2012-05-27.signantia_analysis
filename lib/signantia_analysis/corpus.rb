@@ -16,12 +16,17 @@ module SignantiaAnalysis
       :required => true
     
     def analyse(regex)
-      Dir[path.to_s + "*"].each do |f|
+      Dir[path.to_s + "*"].sort.each_with_index do |f, i|
+        puts "  * #{i}  #{f}"
+        start = Time.now
+        
         @analysis = Analysis.analyse(f, regex)
         
         self.analyses << @analysis
         
         self.save
+        
+        puts "    time: #{Time.now - start}"
       end
     end
   end
