@@ -26,18 +26,6 @@ describe "Analysis" do
       @analysis = Factory.build(:analysis)
       @analysis.should respond_to :regex
     end
-    
-    it "should respond to status" do
-      @analysis = Factory.build(:analysis)
-      @analysis.should respond_to :status
-    end
-  end
-  
-  context "defaults" do
-    it "should have false for status" do
-      @analysis = Factory.build(:analysis)
-      @analysis.status.should == false
-    end
   end
   
   context "associations" do
@@ -100,10 +88,6 @@ describe "Analysis" do
       
       it "should tally the correct frequency of a word" do
         @analysis.fragments.first(:text => "to").frequency.should == 5
-      end
-      
-      it "should set completed status" do
-        @analysis.status.should == true
       end
       
       it "should return an existing analysis if it exists" do

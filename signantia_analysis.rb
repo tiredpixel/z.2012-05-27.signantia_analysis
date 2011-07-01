@@ -81,9 +81,9 @@ start = Time.now
 @corpus.analyse(options[:regex])
 
 puts "  time:      #{Time.now - start}"
-puts "  files:     #{@corpus.analyses(:regex => options[:regex], :status => true).count}"
-puts "  words:     #{@corpus.analyses(:regex => options[:regex], :status => true).fragments.aggregate(:text, :frequency.sum).count}"
-puts "  total:     #{@corpus.analyses(:regex => options[:regex], :status => true).fragments.sum(:frequency)}"
+puts "  files:     #{@corpus.analyses(:regex => options[:regex]).count}"
+puts "  words:     #{@corpus.analyses(:regex => options[:regex]).fragments.aggregate(:text, :frequency.sum).count}"
+puts "  total:     #{@corpus.analyses(:regex => options[:regex]).fragments.sum(:frequency)}"
 puts ""
 
 #                                                                              #

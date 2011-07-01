@@ -19,9 +19,6 @@ module SignantiaAnalysis
     property :regex,
       String,
       :required => true
-    property :status,
-      Boolean,
-      :default => false
     
     def self.analyse(path, regex)
       data = ''
@@ -30,27 +27,17 @@ module SignantiaAnalysis
       
       md5 = Digest::MD5.hexdigest(data)
       
-      @analysis = Analysis.first(
+      @analysis = Analysis.first_or_create(
         :md5sum => md5,
-        :regex => regex,
-        :status => true
+        :regex => regex
         )
       
-      if !@analysis
-        @analysis = Analysis.create(
-          :md5sum => md5,
-          :regex => regex
-          )
-        
+      Analysis.transaction do
         data.scan(eval(@analysis.regex)).each do |word|
           @fragment = @analysis.fragments.first_or_create(:text => word)
           @fragment.frequency += 1
           @fragment.save
         end
-        
-        @analysis.status = true
-        
-        @analysis.save
       end
       
       @analysis
