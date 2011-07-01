@@ -32,10 +32,16 @@ module SignantiaAnalysis
         :regex => regex
         )
       
+      hash = Hash.new(0)
+      
+      data.scan(eval(@analysis.regex)).each do |word|
+        hash[word] += 1
+      end
+      
       Analysis.transaction do
-        data.scan(eval(@analysis.regex)).each do |word|
+        hash.each do |word, frequency|
           @fragment = @analysis.fragments.first_or_create(:text => word)
-          @fragment.frequency += 1
+          @fragment.frequency += frequency
           @fragment.save!
         end
       end
