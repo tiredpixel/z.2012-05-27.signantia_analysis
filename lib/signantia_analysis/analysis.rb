@@ -27,22 +27,29 @@ module SignantiaAnalysis
       
       md5 = Digest::MD5.hexdigest(data)
       
-      @analysis = Analysis.first_or_create(
+      @analysis = Analysis.first(
         :md5sum => md5,
         :regex => regex
         )
       
-      hash = Hash.new(0)
-      
-      data.scan(eval(@analysis.regex)).each do |word|
-        hash[word] += 1
-      end
-      
-      Analysis.transaction do
-        hash.each do |word, frequency|
-          @fragment = @analysis.fragments.first_or_create(:text => word)
-          @fragment.frequency += frequency
-          @fragment.save!
+      if !@analysis
+        @analysis = Analysis.create(
+          :md5sum => md5,
+          :regex => regex
+          )
+        
+        hash = Hash.new(0)
+        
+        data.scan(eval(@analysis.regex)).each do |word|
+          hash[word] += 1
+        end
+        
+        Analysis.transaction do
+          hash.each do |word, frequency|
+            @fragment = @analysis.fragments.first_or_create(:text => word)
+            @fragment.frequency += frequency
+            @fragment.save!
+          end
         end
       end
       
