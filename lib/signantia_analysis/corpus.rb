@@ -26,7 +26,7 @@ module SignantiaAnalysis
         
         self.save
         
-        puts "    time: #{Time.now - start}"
+        puts "    time:        #{Time.now - start}"
       end
     end
   end

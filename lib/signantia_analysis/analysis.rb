@@ -46,7 +46,8 @@ module SignantiaAnalysis
           hash[word] += 1
         end
         
-        puts "    hash: #{Time.now - start}"
+        puts "    hash time:   #{Time.now - start}"
+        puts "    hash size:   #{hash.count}"
         
         start = Time.now
         
@@ -58,7 +59,9 @@ module SignantiaAnalysis
           end
         end
         
-        puts "    db:   #{Time.now - start}"
+        db_time = Time.now - start
+        puts "    db time:     #{db_time}"
+        puts "    hash keys/s: #{hash.count / db_time}"
       else
         puts "    cached"
       end
