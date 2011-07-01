@@ -16,8 +16,6 @@ GEM
     data_objects (0.10.6)
       addressable (~> 2.1)
     diff-lcs (1.1.2)
-    dm-adjust (1.1.0)
-      dm-core (~> 1.1.0)
     dm-aggregates (1.1.0)
       dm-core (~> 1.1.0)
     dm-constraints (1.1.0)
@@ -75,7 +73,6 @@ PLATFORMS
 
 DEPENDENCIES
   data_mapper
-  dm-adjust
   dm-mysql-adapter
   dm-sqlite-adapter
   factory_girl
