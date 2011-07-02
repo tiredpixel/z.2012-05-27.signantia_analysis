@@ -40,7 +40,7 @@ Contributions are encouraged! Please fork the repository and write your code, en
 Credits
 -------
 
-signantia_analysis was written by tiredpixel, for Signantia Limited. [signantia](http://signantia.com) provides free and cheap online language-learning tools.
+signantia_analysis was written by [tiredpixel](https://github.com/tiredpixel/), for Signantia Limited. [signantia](http://signantia.com) provides free and cheap online language-learning tools.
 
 License
 -------
