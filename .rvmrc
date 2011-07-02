@@ -1,4 +1,4 @@
-rvm --create use 1.9.2@signantia-analysis
+rvm --create use 1.9.2@signantia_analysis
 
 if ! command -v bundle ; then
   gem install bundler
