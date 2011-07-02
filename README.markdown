@@ -24,11 +24,11 @@ Getting Started
 
 3.  In the root folder of the repository, run the tool from the command-line with something like:
 
-        ./signantia_analysis.rb --database "[SQLite](http://www.sqlite.org/):/home/user/example.[SQLite](http://www.sqlite.org/)3" --corpus "/home/user/corpus/" --regex "/[\S]+/"
+        ./signantia_analysis.rb --database "sqlite:/home/user/example.sqlite3" --corpus "/home/user/corpus/" --regex "/[\S]+/"
 
     This will tally the frequencies of each word in the corpus.
 
-4.  Interrogate the database using some tool such as `[SQLite](http://www.sqlite.org/)3` for [SQLite](http://www.sqlite.org/).
+4.  Interrogate the database using some tool such as `sqlite3` for [SQLite](http://www.sqlite.org/).
 
 Run `./signantia_analysis.rb --help` to see a list of parameters.
 
