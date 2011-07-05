@@ -2,7 +2,7 @@
 
 require 'optparse'
 
-require_relative 'lib/signantia_analysis'
+require_relative '../lib/signantia_analysis'
 
 puts "\n***signantia_analysis***\n\n"
 
@@ -11,7 +11,7 @@ puts "\n***signantia_analysis***\n\n"
 options = {}
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: signantia_analysis.rb [options]"
+  opts.banner = "Usage: signantia_analysis [options]"
   
   opts.on(
     '-d',
