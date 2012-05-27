@@ -42,7 +42,7 @@ Credits
 
 signantia_analysis was written by [tiredpixel](https://github.com/tiredpixel/), for Signantia Limited.
 
-![](http://signantia.com/images/header/signantia_logo.png)
+![](http://signantia.com/images/signantia_logo.png)
 
 [signantia](http://signantia.com) provides free and cheap online language-learning tools.
 
