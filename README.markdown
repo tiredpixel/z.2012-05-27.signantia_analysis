@@ -40,7 +40,7 @@ Contributions are encouraged! Please fork the repository and write your code, en
 Credits
 -------
 
-signantia_analysis was written by [tiredpixel](https://github.com/tiredpixel/), for Signantia Limited.
+signantia_analysis was written by [@tiredpixel](http://coderwall.com/tiredpixel), for [signantia](http://signantia.com).
 
 ![](http://signantia.com/images/signantia_logo.png)
 
@@ -49,4 +49,4 @@ signantia_analysis was written by [tiredpixel](https://github.com/tiredpixel/), 
 License
 -------
 
-signantia_analysis is © 2011 Signantia Limited. It is free software, released under the MIT License, and may be redistributed under the terms specified in `LICENSE`.
+© signantia.com & @tiredpixel 2012. It is free software, released under the MIT License, and may be redistributed under the terms specified in `LICENSE`.
