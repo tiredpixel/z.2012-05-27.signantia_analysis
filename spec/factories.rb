@@ -1,13 +1,16 @@
-Factory.define :corpus, :class => SignantiaAnalysis::Corpus do |c|
-  c.path "#{File.dirname(__FILE__)}/fixtures/corpus/"
+FactoryGirl.define do
+  factory :corpus, :class => SignantiaAnalysis::Corpus do
+    path "#{File.dirname(__FILE__)}/fixtures/corpus/"
+  end
+  
+  factory :analysis, :class => SignantiaAnalysis::Analysis do
+    md5sum "acaceb50eb543d1047c64987c914e547"
+    regex "/[\\S]+/"
+  end
+  
+  factory :fragment, :class => SignantiaAnalysis::Fragment do
+    association(:analysis)
+    text "word"
+  end
 end
 
-Factory.define :analysis, :class => SignantiaAnalysis::Analysis do |a|
-  a.md5sum "acaceb50eb543d1047c64987c914e547"
-  a.regex "/[\\S]+/"
-end
-
-Factory.define :fragment, :class => SignantiaAnalysis::Fragment do |f|
-  f.association(:analysis)
-  f.text "word"
-end
